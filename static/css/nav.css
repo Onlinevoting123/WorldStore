@@ -3,9 +3,64 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to bottom, #c2c8cf, #bac1c7);
+    background: linear-gradient(to bottom, #ffffff, #ffffff);
     color: #6b6868;
 }
+
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 1350px;
+    overflow: hidden;
+}
+
+.carousel-images {
+    position: relative;
+    display: flex;
+}
+
+.carousel-item {
+    display: none;
+    width: 100%;
+}
+
+.carousel-item img {
+    width: 100%;
+    display: block;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+#slide1:checked ~ .carousel-images #img1,
+#slide2:checked ~ .carousel-images #img2,
+#slide3:checked ~ .carousel-images #img3 {
+    display: block;
+}
+
+/* Left and Right buttons */
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 1000;
+    font-size: 20px;
+}
+
+.arrow.left {
+    left: 10px;
+}
+
+.arrow.right {
+    right: 10px;
+}
+
 .go {
     color: #f8faff;
 }
@@ -67,7 +122,7 @@ div.parent {
 /* Card styles */
 .card {
     background: linear-gradient(135deg, #ffffff, #f9f9f9);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 30px rgba(0,0,0,0.2);
     overflow: hidden;
     text-align: center;
     width: 250px;
