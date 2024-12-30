@@ -12,8 +12,8 @@
         font-family: 'Poppins', sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #f8f9fa;
-        color: #333;
+        background-color: #ffffff;
+        color: #ffffff;
       }
 
       /* Navbar */
@@ -50,8 +50,9 @@
       }
 
       .card {
+        border-radius: 10px;
         background: linear-gradient(135deg, #ffffff, #ffffff);
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: 2px 2px 30px rgba(0,0,0,0.2);
         overflow: hidden;
         text-align: center;
         width: 200px;
@@ -121,7 +122,29 @@
       </form></div>
       </div>
     </nav>
-    <br>
+    <div class="carousel">
+      <input type="radio" name="carousel" id="slide1" checked>
+      <input type="radio" name="carousel" id="slide2">
+      <input type="radio" name="carousel" id="slide3">
+
+      <div class="carousel-images">
+          <div class="carousel-item" id="img1">
+              <img src="{{ url_for('static', filename='images/slide1.jpg') }}" alt="Image 1" height="400px">
+          </div>
+          <div class="carousel-item" id="img2">
+              <img src="{{ url_for('static', filename='images/slide2.jpg') }}" alt="Image 2" height="400px">
+          </div>
+          <div class="carousel-item" id="img3">
+              <img src="{{ url_for('static', filename='images/slide3.jpg') }}" alt="Image 3" height="400px">
+          </div>
+      </div>
+
+      <button class="arrow left" onclick="moveSlide(-1)">&#10094;</button>
+      <button class="arrow right" onclick="moveSlide(1)">&#10095;</button>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <br>
     <div class="container">
       {% for product in products %}
       <div class="card">
