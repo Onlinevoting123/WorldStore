@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="website icon" type="png" href="/static/images/lo.png">
+    <link rel="stylesheet" href="/static/css/styles.css"
+</head>
+<body>
+    <div>
+    <div class="login-container">
+        <div class="login-form">
+            <div>
+                <img src="{{ url_for('static', filename='images/lo.png') }}" alt="Logo" height="120px">
+              </div>
+            <form method="post">
+                <div class="input-group">
+                    <label for="customer_name"><b>Name</b></label>
+                    <input type="text" id="customer_name" name="customer_name" placeholder="Enter your name" required>
+                </div>
+                <div class="input-group">
+                    <label for="customer_number"><b>Mobile</b> number</label>
+                    <input type="text" id="customer_number" name="customer_number" placeholder="Enter your number" required>
+                </div>
+                <button type="submit">Log In</button>
+            </form>
+        </div>
+    </div>
+    <br>
+    <div>
+    <footer>
+        <p>&copy; 2025 WORLDSTORE. All Rights Reserved.</p>
+    </footer>
+    </div>
+</div>
+</body>
+</html>
