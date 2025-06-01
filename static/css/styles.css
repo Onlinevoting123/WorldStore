@@ -1,21 +1,16 @@
-/* Reset some basic styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
-/* Set body background */
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #6a11cb, #2575fc);
+    background: #ffffff;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
-/* Styling for the container */
 .login-container {
     width: 100%;
     height: 100%;
@@ -23,10 +18,8 @@ body {
     justify-content: center;
     align-items: center;
 }
-
-/* The form container */
 .login-form {
-    background: rgba(2, 2, 2, 0.8);
+    background: rgba(255, 255, 255, 0.8);
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -34,15 +27,11 @@ body {
     width: 100%;
     max-width: 400px;
 }
-
-/* Heading Style */
 .login-form h2 {
     color: #333;
     margin-bottom: 20px;
     font-size: 24px;
 }
-
-/* Styling for input fields */
 .input-group {
     margin-bottom: 20px;
     text-align: left;
@@ -68,8 +57,6 @@ body {
 .input-group input:focus {
     border-color: #2575fc;
 }
-
-/* Button Style */
 button {
     width: 100%;
     padding: 14px;
