@@ -7,7 +7,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-app.secret_key = os.urandom(24)
+app.secret_key = 'Hemanth'
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -24,24 +24,24 @@ def users_page():
     return render_template('users.html', users=users)
 
 products = [
-    {'id': 1, 'name': '6pcs Brown cups', 'price': 99, 'image': '/static/images/btcups.jpg'},
-    {'id': 2, 'name': 'White cups set', 'price': 129, 'image': '/static/images/wtset.jpg'},
-    {'id': 3, 'name': 'Red snack set', 'price': 129, 'image': '/static/images/rsset.jpg'},
-    {'id': 4, 'name': '2pcs Soup cups', 'price': 99, 'image': '/static/images/bscups.jpg'},
-    {'id': 5, 'name': 'Plastic boxes', 'price': 129, 'image': '/static/images/tboxes.jpg'},
-    {'id': 6, 'name': '2pcs Brown cups', 'price': 99, 'image': '/static/images/btcup.jpg'},
-    {'id': 7, 'name': '2pcs Green cups', 'price': 99, 'image': '/static/images/gtcups.jpg'},
-    {'id': 8, 'name': '4pcs Glass bowls', 'price': 99, 'image': '/static/images/hcups.jpg'},
-    {'id': 9, 'name': '2pcs Soup bowls', 'price': 99, 'image': '/static/images/sb.jpg'},
-    {'id': 10, 'name': '3pcs White plates', 'price': 99, 'image': '/static/images/plates.jpg'},
-    {'id': 11, 'name': '3pcs Plastic cups', 'price': 99, 'image': '/static/images/plasticcups.jpg'},
-    {'id': 12, 'name': '4pcs Spoons', 'price': 99, 'image': '/static/images/spoons.jpg'},
-    {'id': 13, 'name': '3pcs Plates', 'price': 99, 'image': '/static/images/yplates.jpg'},
-    {'id': 14, 'name': 'Brush stand', 'price': 99, 'image': '/static/images/plas.jpg'},
-    {'id': 15, 'name': 'Cups set', 'price': 99, 'image': '/static/images/homeset.jpg'},
-    {'id': 16, 'name': 'Square plates', 'price': 99, 'image': '/static/images/splates.jpg'},
-    {'id': 17, 'name': 'White cup', 'price': 99, 'image': '/static/images/wc.jpg'},
-    {'id': 18, 'name': 'Red box', 'price': 99, 'image': '/static/images/redb.jpg'},
+    {'id': 1, 'name': 'Headphones', 'price': 999, 'image': '/static/images/beastheadphones.jpg'},
+    {'id': 2, 'name': "Rudy's Shampoo", 'price': 129, 'image': '/static/images/rudyshampoo.jpg'},
+    {'id': 3, 'name': 'OIG Handbag', 'price': 399, 'image': '/static/images/handbag.jpg'},
+    {'id': 4, 'name': 'Alamy Bottle', 'price': 99, 'image': '/static/images/bottle.jpg'},
+    {'id': 5, 'name': 'Luxury Lipstick', 'price': 129, 'image': '/static/images/luxurylipstick.avif'},
+    {'id': 6, 'name': 'Mac Powder', 'price': 249, 'image': '/static/images/macpow.webp'},
+    {'id': 7, 'name': 'Comb', 'price': 99, 'image': '/static/images/grooming.jpg'},
+    {'id': 8, 'name': 'Teapot', 'price': 199, 'image': '/static/images/teapot.avif'},
+    {'id': 9, 'name': 'Wrist Watch', 'price': 499, 'image': '/static/images/watch.jpg'},
+    {'id': 10, 'name': 'JBL Speaker', 'price': 1999, 'image': '/static/images/jbl.avif'},
+    {'id': 11, 'name': 'Nike Shoes', 'price': 899, 'image': '/static/images/nike.jpg'},
+    {'id': 12, 'name': 'Table', 'price': 599, 'image': '/static/images/table.jpg'},
+    {'id': 13, 'name': 'Sofaa', 'price': 2499, 'image': '/static/images/sofaa.webp'},
+    {'id': 14, 'name': 'Bacardi Breezer', 'price': 199, 'image': '/static/images/breezer.jpg'},
+    {'id': 15, 'name': "Victoria's Spray", 'price': 249, 'image': '/static/images/spray.jpg'},
+    {'id': 16, 'name': 'Hair Strengthener', 'price': 149, 'image': '/static/images/strengthner.png'},
+    {'id': 17, 'name': 'Hair Dryer', 'price': 699, 'image': '/static/images/hair.webp'},
+    {'id': 18, 'name': 'Curlyhair Spray', 'price': 299, 'image': '/static/images/curlspray.jpg'},
 ]
 
 
@@ -98,6 +98,8 @@ def view_cart():
     return render_template('try.html', cart=cart, total=total)
 
 
+from flask import flash
+
 @app.route('/add_to_cart/<int:product_id>', methods=['POST'])
 def add_to_cart(product_id):
     product = next((p for p in products if p['id'] == product_id), None)
@@ -109,7 +111,9 @@ def add_to_cart(product_id):
         else:
             cart.append({'id': product['id'], 'name': product['name'], 'price': product['price'], 'quantity': 1})
         session['cart'] = cart
-        session.modified = True
+        flash(f"{product['name']} has been added to your cart!")
+    else:
+        flash("Product not found!", "error")
     return redirect(url_for('view_cart'))
 
 
